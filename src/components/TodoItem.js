@@ -4,15 +4,24 @@ function TodoItem(props) {
   const [checked, setChecked] = useState(false);
   const [deleted, setDeleted] = useState(false);
 
+  const handleCheck = () => {
+    if (checked) {
+      setChecked(false);
+      props.checkedHandler(-1);
+    } else {
+      setChecked(true);
+      props.checkedHandler(1);
+    }
+  };
   return (
-    <div className="m-3   p-3  bg-white rounded  shadow ">
+    <div className="mx-3 p-3 bg-white shadow">
       <div className="flex">
         <input
           type="checkbox"
           className={
             "mt-checkbox mt-checkbox-blue-500hidden overflow-hidden mr-4 my-1 w-5 h-5"
           }
-          onClick={() => (checked ? setChecked(false) : setChecked(true))}
+          onClick={handleCheck}
         />
         <label
           className={`flex items-center cursor-pointer select-none transition-all duration-200 ${
