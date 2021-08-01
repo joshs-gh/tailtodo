@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function TodoFooter(props) {
+  const [show, setShow] = useState("all");
+
   return (
-    <div className="flex flex-col justify-evenly">
-      <div className="mx-3 p-3 bg-white shadow flow-root">
-        <label className="text-gray-500 font-thin">
+    <div className="flex flex-col">
+      <div className="mx-3 p-3 bg-white shadow flex justify-between text-gray-500 font-thin text-sm items-center">
+        <label className="">
           {props.itemsLeft} {props.itemsLeft === 1 ? "item" : "items"} left
         </label>{" "}
+        <span className="">
+          <button
+            className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
+              show === "all" ? "border-gray-300" : ""
+            }`}
+            onClick={() => setShow("all")}
+          >
+            All
+          </button>
+          <button
+            className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
+              show === "active" ? "border-gray-300" : ""
+            }`}
+            onClick={() => setShow("active")}
+          >
+            Active
+          </button>
+          <button
+            className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
+              show === "completed" ? "border-gray-300" : ""
+            }`}
+            onClick={() => setShow("completed")}
+          >
+            Completed
+          </button>
+        </span>
+        <button className="font-thin hover:underline">Clear Completed</button>
       </div>
       <div className="bg-white h-2 border-2 w-11/12 m-auto"></div>
       <div className="bg-white h-1 border-1 w-5/6 m-auto"></div>
