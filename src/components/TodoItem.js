@@ -44,7 +44,7 @@ function TodoItem(props) {
             className="border-none text-red-400 float-right hover:text-red-600 text-xl"
             onClick={() => {
               deleted ? setDeleted(false) : setDeleted(true);
-              props.delHandler(props.todo);
+              props.delHandler(props.tdid);
             }}
           >
             X

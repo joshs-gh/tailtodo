@@ -40,7 +40,12 @@ export default function TodoFooter(props) {
             Completed
           </button>
         </span>
-        <button className="font-thin hover:underline">Clear Completed</button>
+        <button
+          className="font-thin hover:underline"
+          onClick={props.clearHandler}
+        >
+          Clear Completed
+        </button>
       </div>
       <div className="bg-white h-2 border-2 w-11/12 m-auto"></div>
       <div className="bg-white h-1 border-1 w-5/6 m-auto"></div>

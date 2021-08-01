@@ -31,10 +31,14 @@ function App() {
     setShow(s);
   };
 
-  const delHandler = (todoText) => {
-    const t = todos.filter((todo) => todo.todo !== todoText);
+  const delHandler = (tdid) => {
+    const t = todos.filter((todo) => todo.tdid !== tdid);
     setTodos(t);
     setItemsLeft(itemsLeft - 1);
+  };
+
+  const clearHandler = () => {
+    setTodos(todos.filter((todo) => !todo.checked));
   };
 
   return (
@@ -53,7 +57,6 @@ function App() {
                 checkedHandler={checkedHandler}
               ></TodoItem>
             );
-            break;
           case "active":
             if (!t.checked)
               return (
@@ -82,10 +85,14 @@ function App() {
             break;
           default:
             console.log("Bad show state");
-            return;
+            return null;
         }
       })}
-      <TodoFooter itemsLeft={itemsLeft} showHandler={showHandler}></TodoFooter>
+      <TodoFooter
+        itemsLeft={itemsLeft}
+        showHandler={showHandler}
+        clearHandler={clearHandler}
+      ></TodoFooter>
     </div>
   );
 }
