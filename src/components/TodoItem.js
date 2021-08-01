@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function TodoItem(props) {
   const [checked, setChecked] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const checkbox = useRef(null);
+
+  useEffect(() => {
+    checkbox.current.checked = props.checked;
+  }, [props.checked]);
 
   const handleCheck = () => {
     if (checked) {
       setChecked(false);
-      props.checkedHandler(-1);
+      props.checkedHandler(props.tdid, false);
     } else {
       setChecked(true);
-      props.checkedHandler(1);
+      props.checkedHandler(props.tdid, true);
     }
   };
   return (
@@ -18,6 +23,7 @@ function TodoItem(props) {
       <div className="flex">
         <input
           type="checkbox"
+          ref={checkbox}
           className={
             "mt-checkbox mt-checkbox-blue-500hidden overflow-hidden mr-4 my-1 w-5 h-5"
           }
@@ -30,14 +36,14 @@ function TodoItem(props) {
               : "text-gray-700 font-medium"
           }`}
         >
-          {props.Todo}
+          {props.todo}
         </label>
         <div className="flow-root w-full">
           <button
             className="border-none text-red-400 float-right hover:text-red-600 text-xl"
             onClick={() => {
               deleted ? setDeleted(false) : setDeleted(true);
-              props.delHandler(props.Todo);
+              props.delHandler(props.todo);
             }}
           >
             X

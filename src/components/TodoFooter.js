@@ -3,6 +3,11 @@ import React, { useState } from "react";
 export default function TodoFooter(props) {
   const [show, setShow] = useState("all");
 
+  const showHandler = (s) => {
+    setShow(s);
+    props.showHandler(s);
+  };
+
   return (
     <div className="flex flex-col">
       <div className="mx-3 p-3 bg-white shadow flex justify-between text-gray-500 font-thin text-sm items-center">
@@ -14,7 +19,7 @@ export default function TodoFooter(props) {
             className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
               show === "all" ? "border-gray-300" : ""
             }`}
-            onClick={() => setShow("all")}
+            onClick={() => showHandler("all")}
           >
             All
           </button>
@@ -22,7 +27,7 @@ export default function TodoFooter(props) {
             className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
               show === "active" ? "border-gray-300" : ""
             }`}
-            onClick={() => setShow("active")}
+            onClick={() => showHandler("active")}
           >
             Active
           </button>
@@ -30,7 +35,7 @@ export default function TodoFooter(props) {
             className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
               show === "completed" ? "border-gray-300" : ""
             }`}
-            onClick={() => setShow("completed")}
+            onClick={() => showHandler("completed")}
           >
             Completed
           </button>
