@@ -87,6 +87,7 @@ function App() {
             console.log("Bad show state");
             return null;
         }
+        return null;
       })}
       <TodoFooter
         itemsLeft={itemsLeft}
