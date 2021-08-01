@@ -7,6 +7,7 @@ function TodoItem(props) {
 
   useEffect(() => {
     checkbox.current.checked = props.checked;
+    setChecked(props.checked);
   }, [props.checked]);
 
   const handleCheck = () => {
