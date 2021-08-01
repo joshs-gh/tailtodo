@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-200 ml-5 mt-5 w-1/3 pb-3">
+    <div className="bg-gray-200 mx-3 mt-5 pb-3 lg:w-1/3">
       <NewTodo newTodo={newTodo}></NewTodo>
       {todos.map((t, i) => {
         switch (show) {

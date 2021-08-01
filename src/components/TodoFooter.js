@@ -10,11 +10,11 @@ export default function TodoFooter(props) {
 
   return (
     <div className="flex flex-col">
-      <div className="mx-3 p-3 bg-white shadow flex justify-between text-gray-500 font-thin text-sm items-center">
-        <label className="">
+      <div className="mx-3 p-3 bg-white shadow flex justify-between text-gray-500 font-thin items-center">
+        <label className="text-xs">
           {props.itemsLeft} {props.itemsLeft === 1 ? "item" : "items"} left
         </label>{" "}
-        <span className="">
+        <div className="flex justify-center">
           <button
             className={`font-thin mx-1 border-white hover:border-gray-200 border-2 px-1 ${
               show === "all" ? "border-gray-300" : ""
@@ -39,7 +39,7 @@ export default function TodoFooter(props) {
           >
             Completed
           </button>
-        </span>
+        </div>
         <button
           className="font-thin hover:underline"
           onClick={props.clearHandler}
