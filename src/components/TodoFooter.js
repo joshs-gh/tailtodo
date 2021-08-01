@@ -5,7 +5,7 @@ export default function TodoFooter(props) {
     <div className="flex flex-col justify-evenly">
       <div className="mx-3 p-3 bg-white shadow flow-root">
         <label className="text-gray-500 font-thin">
-          {props.itemsLeft} items left
+          {props.itemsLeft} {props.itemsLeft === 1 ? "item" : "items"} left
         </label>{" "}
       </div>
       <div className="bg-white h-2 border-2 w-11/12 m-auto"></div>
